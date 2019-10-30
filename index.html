@@ -17,18 +17,67 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+
+.text-block2 {
+  position: absolute;
+  top: 20px;
+  lefr: 20px;
+  background-color: black;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
 </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
 </head>
 <body>
+<script>
+  $(document).ready(function () {
+    console.log('document ready!');
+    $("#cert").hide();
+    $("#upload").click(function() {
+      const name = $("#name")["0"].value;
+      const dist = $("#distant")["0"].value;
+      $("#loc1").html(name);
+      $("#loc2").html(dist);
+      $("#cert").show();
+    });
+    $("#clear").click(function() {
+      $("#cert").hide();
+      $("#name")["0"].value = "";
+      $("#distant")["0"].value = "";
+    })
+  });
+</script>
 
 <h2>Image Text Blocks</h2>
 <p>How to place text blocks over an image:</p>
-
-<div class="container">
-  <img src="https://i.redd.it/145kf70722h31.jpg" alt="Nature" style="width:100%;">
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Name</span>
+  </div>
+  <input id="name" type="text" class="form-control" aria-label="Name" aria-describedby="inputGroup-sizing-default">
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Distant</span>
+  </div>
+  <input id="distant" type="text" class="form-control" aria-label="Distant" aria-describedby="inputGroup-sizing-default">
+</div>
+<button type="button" id="upload" class="btn btn-primary">Submit</button>
+<button type="button" id="clear" class="btn btn-danger">Reset</button>
+<br />
+<div id="cert"  class="container" style="width: 600px; height: 100%;">
+  <img src="https://schieflicht.de/blog/wp-content/gallery/iceland-1/iceland_portfolio_001.jpg" alt="Nature" style="width:100%;">
   <div class="text-block">
-    <h4>Nature</h4>
-    <p>What a beautiful sunrise</p>
+    <h4 id="loc1">Nature</h4>
+  </div>
+  <div class="text-block2">
+    <p id="loc2">What a beautiful sunrise</p>
   </div>
 </div>
 
